@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CommonAdapter extends ArrayAdapter<String>{
@@ -14,12 +13,14 @@ public class CommonAdapter extends ArrayAdapter<String>{
 	protected String[] mDesc;
 	protected String[] mproperty;
 	protected int i = 0;
+	protected String mType;
 
-	public CommonAdapter(Context context, String[] desc, String[] property) {
+	public CommonAdapter(Context context, String[] desc, String[] property, String type) {
 		super(context, R.layout.list_item, desc);
 		mContext = context;
 		mDesc = desc;
 		mproperty = property;
+		mType = type;
 	}
 
 	@Override
@@ -40,8 +41,15 @@ public class CommonAdapter extends ArrayAdapter<String>{
 		}
 
 		holder.desc.setText(mDesc[position]);
-		holder.property.setText(System.getProperty(mproperty[position]));
-
+		if(mType == "System"){
+			holder.property.setText(System.getProperty(mproperty[position]));
+		}
+		else{
+			holder.property.setText(mproperty[position]);
+		}
+		
+		
+		
 		return convertView;
 	}
 
