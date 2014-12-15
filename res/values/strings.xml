@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_section1">System</string>
     <string name="title_section2">Network</string>
-    <string name="title_section3">Battery</string>
+    <string name="title_section3">Display</string>
     <string name="title_section4">CPU</string>
     <string name="title_section5">Memory</string>
 

@@ -4,6 +4,10 @@ import java.util.Locale;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,7 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,6 +33,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         setContentView(R.layout.activity_main);
 
         // Set up the action bar.
-        final ActionBar actionBar = getActionBar();
+        actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create the adapter that will return a fragment for each of the three
@@ -82,7 +87,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	// TODO Auto-generated method stub
     	int id = item.getItemId();
     	if(id == R.id.action_refresh){
-    		
+    		mViewPager = (ViewPager) findViewById(R.id.pager);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+            actionBar.setSelectedNavigationItem(0);
     	}
     	return true;
     	
@@ -108,7 +115,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
+		
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -121,7 +128,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			case 1:
 				return new NetworkFragment();
 			case 2:
-				return new BatteryFragment();
+				return new ScreenFragment();
 			case 3:
 				return new CPUFragment();
 			case 4:
@@ -131,7 +138,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				return null;
 			}
         }
-
+    	
         @Override
         public int getCount() {
             // Show 3 total pages.
@@ -155,6 +162,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
             return null;
         }
+       
     }
+    
 
 }
