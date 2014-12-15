@@ -6,7 +6,7 @@
     <string name="title_section1">System</string>
     <string name="title_section2">Network</string>
     <string name="title_section3">Battery</string>
-    <string name="title_section4">Bluetooth</string>
-    <string name="title_section5">Hardware</string>
+    <string name="title_section4">CPU</string>
+    <string name="title_section5">Memory</string>
 
 </resources>

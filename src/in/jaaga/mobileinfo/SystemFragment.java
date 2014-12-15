@@ -33,21 +33,21 @@ public class SystemFragment extends ListFragment{
 		return rootView;
 	}
 	
-	@Override
-	public void onListItemClick(ListView l, View v, final int position, long id) {
-		// TODO Auto-generated method stub
-		super.onListItemClick(l, v, position, id);
-		tts = new TextToSpeech(getActivity(), new OnInitListener() {
-			
-			@Override
-			public void onInit(int status) {
-				// TODO Auto-generated method stub
-				if(status == TextToSpeech.SUCCESS){
-					String mText = desc[position]  + " " + System.getProperty(property[position]);
-					tts.setSpeechRate((float) 0.8);
-					tts.speak(mText, TextToSpeech.QUEUE_FLUSH, null);
-				}
-			}
-		});
-	}
+//	@Override
+//	public void onListItemClick(ListView l, View v, final int position, long id) {
+//		// TODO Auto-generated method stub
+//		super.onListItemClick(l, v, position, id);
+//		tts = new TextToSpeech(getActivity(), new OnInitListener() {
+//			
+//			@Override
+//			public void onInit(int status) {
+//				// TODO Auto-generated method stub
+//				if(status == TextToSpeech.SUCCESS){
+//					String mText = desc[position]  + " " + System.getProperty(property[position]);
+//					tts.setSpeechRate((float) 0.8);
+//					tts.speak(mText, TextToSpeech.QUEUE_FLUSH, null);
+//				}
+//			}
+//		});
+//	}
 }

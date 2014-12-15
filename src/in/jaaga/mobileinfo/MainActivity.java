@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -77,6 +78,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
     
     @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    	// TODO Auto-generated method stub
+    	int id = item.getItemId();
+    	if(id == R.id.action_refresh){
+    		
+    	}
+    	return true;
+    	
+    }
+    
+    @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
@@ -111,9 +123,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			case 2:
 				return new BatteryFragment();
 			case 3:
-				return new SystemFragment();
+				return new CPUFragment();
 			case 4:
-				return new SystemFragment();
+				return new MemoryFragment();
 
 			default:
 				return null;
