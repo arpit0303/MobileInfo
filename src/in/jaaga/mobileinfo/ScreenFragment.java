@@ -1,5 +1,8 @@
 package in.jaaga.mobileinfo;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.DisplayMetrics;
@@ -16,6 +19,10 @@ public class ScreenFragment extends ListFragment{
 		View rootView = inflater.inflate(R.layout.fragment_network,
 				container, false);
 		
+		AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
 		DisplayMetrics dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		

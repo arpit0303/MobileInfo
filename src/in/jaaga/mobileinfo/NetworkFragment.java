@@ -1,5 +1,8 @@
 package in.jaaga.mobileinfo;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,6 +18,10 @@ public class NetworkFragment extends ListFragment{
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_network,
 				container, false);
+		
+		AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 		
 		ConnectivityManager cm = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo nf = cm.getActiveNetworkInfo();

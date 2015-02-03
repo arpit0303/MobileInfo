@@ -1,5 +1,8 @@
 package in.jaaga.mobileinfo;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
@@ -26,6 +29,10 @@ public class SystemFragment extends ListFragment{
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_system,
 				container, false);
+		
+		AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 		
 		CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(),desc,property,"System");
 		setListAdapter(adapter);

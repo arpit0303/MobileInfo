@@ -3,6 +3,9 @@ package in.jaaga.mobileinfo;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.os.Bundle;
@@ -20,6 +23,10 @@ public class MemoryFragment extends Fragment{
 		// TODO Auto-generated method stub
 		View rootView = inflater.inflate(R.layout.fragment_cpu, container, false);
 		
+		AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
 		MemoryInfo mf = new MemoryInfo();
 		ActivityManager am = (ActivityManager) getActivity().getSystemService(getActivity().ACTIVITY_SERVICE);
 		am.getMemoryInfo(mf);

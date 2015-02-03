@@ -3,6 +3,9 @@ package in.jaaga.mobileinfo;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +21,10 @@ public class CPUFragment extends Fragment{
 		// TODO Auto-generated method stub
 		View rootView = inflater.inflate(R.layout.fragment_cpu, container, false);
 		
+		AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
 		TextView cpu = (TextView) rootView.findViewById(R.id.textView1);
 		cpu.setText(ReadCPUinfo());
 		
