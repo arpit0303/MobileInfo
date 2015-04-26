@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mobile Info</string>
+    <string name="title_activity_main">Mobile Info</string>
+
+    <string name="title_section1">System</string>
+    <string name="title_section2">Network</string>
+    <string name="title_section3">Display</string>
+    <string name="title_section4">CPU</string>
+    <string name="title_section5">Memory</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
