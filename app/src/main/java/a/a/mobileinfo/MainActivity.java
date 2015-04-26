@@ -1,5 +1,7 @@
 package a.a.mobileinfo;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,6 +32,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         setContentView(R.layout.activity_main);
 
         // Set up the action bar.
-        final ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create the adapter that will return a fragment for each of the three
@@ -86,9 +89,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Intent intent;
+        switch (id){
+            case R.id.action_more_apps:
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:AASA"));
+                startActivity(intent);
+                break;
+            case R.id.action_rate_us:
+                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("market://details?id=aasa.android.mobile.info"));
+                startActivity(intent);
+                break;
+            case R.id.action_refresh:
+                mViewPager = (ViewPager) findViewById(R.id.pager);
+                mViewPager.setAdapter(mSectionsPagerAdapter);
+                actionBar.setSelectedNavigationItem(0);
+                break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -139,7 +156,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 5 total pages.
             return 5;
         }
 

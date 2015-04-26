@@ -28,6 +28,13 @@ public class NetworkFragment extends ListFragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+        connectionDetails();
+
+        return rootView;
+    }
+
+    private void connectionDetails() {
+
         ConnectivityManager cm = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo nf = cm.getActiveNetworkInfo();
 
@@ -51,7 +58,6 @@ public class NetworkFragment extends ListFragment {
             setListAdapter(adapter);
         }
 
-        return rootView;
     }
 
 }
