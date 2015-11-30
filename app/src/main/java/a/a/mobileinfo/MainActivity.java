@@ -142,12 +142,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 case 0:
                     return new SystemFragment();
                 case 1:
-                    return new NetworkFragment();
+                    return new DeviceFragment();
                 case 2:
-                    return new DisplayFragment();
+                    return new SimFragment();
                 case 3:
-                    return new CPUFragment();
+                    return new NetworkFragment();
                 case 4:
+                    return new DisplayFragment();
+                case 5:
+                    return new CPUFragment();
+                case 6:
                     return new MemoryFragment();
                 default:
                     return null;
@@ -156,8 +160,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         @Override
         public int getCount() {
-            // Show 5 total pages.
-            return 5;
+            // Show 7 total pages.
+            return 7;
         }
 
         @Override
@@ -174,6 +178,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(R.string.title_section4).toUpperCase(l);
                 case 4:
                     return getString(R.string.title_section5).toUpperCase(l);
+                case 5:
+                    return getString(R.string.title_section6).toUpperCase(l);
+                case 6:
+                    return getString(R.string.title_section7).toUpperCase(l);
             }
             return null;
         }

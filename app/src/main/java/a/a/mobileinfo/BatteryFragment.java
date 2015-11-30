@@ -13,7 +13,7 @@ public class BatteryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_a, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_text, container, false);
 
 //        TextView cpu = (TextView) rootView.findViewById(R.id.info);
 //        cpu.setText(readBattery());

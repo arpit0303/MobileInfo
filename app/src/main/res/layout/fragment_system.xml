@@ -21,6 +21,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="VM : Virtual Machine"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

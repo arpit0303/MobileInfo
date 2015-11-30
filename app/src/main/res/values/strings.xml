@@ -3,10 +3,12 @@
     <string name="title_activity_main">Mobile Info</string>
 
     <string name="title_section1">System</string>
-    <string name="title_section2">Network</string>
-    <string name="title_section3">Display</string>
-    <string name="title_section4">CPU</string>
-    <string name="title_section5">Memory</string>
+    <string name="title_section2">Device</string>
+    <string name="title_section3">Sim</string>
+    <string name="title_section4">Internet</string>
+    <string name="title_section5">Display</string>
+    <string name="title_section6">CPU</string>
+    <string name="title_section7">Memory</string>
 
     <string name="hello_world">Hello world!</string>
 
