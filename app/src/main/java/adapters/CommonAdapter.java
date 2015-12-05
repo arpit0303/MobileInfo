@@ -46,12 +46,7 @@ public class CommonAdapter extends ArrayAdapter<String> {
         }
 
         holder.desc.setText(mDesc[position]);
-
-        if (mType == "System") {
-            holder.property.setText(System.getProperty(mproperty[position]));
-        } else {
-            holder.property.setText(mproperty[position]);
-        }
+        holder.property.setText(mproperty[position]);
 
         return convertView;
     }

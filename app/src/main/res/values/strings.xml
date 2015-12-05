@@ -7,8 +7,9 @@
     <string name="title_section3">Sim</string>
     <string name="title_section4">Internet</string>
     <string name="title_section5">Display</string>
-    <string name="title_section6">CPU</string>
-    <string name="title_section7">Memory</string>
+    <string name="title_section6">Bluetooth</string>
+    <string name="title_section7">CPU</string>
+    <string name="title_section8">Memory</string>
 
     <string name="hello_world">Hello world!</string>
 
