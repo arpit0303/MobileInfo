@@ -5,7 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ListFragment;
@@ -19,10 +18,10 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import adapters.CommonAdapter;
@@ -32,6 +31,7 @@ import adapters.CommonAdapter;
  */
 public class InternetFragment extends ListFragment implements CompoundButton.OnCheckedChangeListener {
 
+    InterstitialAd mInterstitialAd;
     Switch mobileSwitch, wifiSwitch;
     NetworkInfo nf;
     WifiInfo wf;
@@ -39,7 +39,6 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
     ConnectivityManager cm;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    int bv = Build.VERSION.SDK_INT;
     private String TAG = "InternetFragment";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,15 +56,22 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
             }
         });
 
-        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
         wm = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
 //        mobileSwitch.setOnCheckedChangeListener(this);
         wifiSwitch.setOnCheckedChangeListener(this);
+
+        mInterstitialAd = new InterstitialAd(getActivity());
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+        mInterstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+        requestNewInterstitial();
 
         connectionDetails();
 
@@ -73,6 +79,9 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
     }
 
     private void connectionDetails() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
         wifiSwitch.setChecked(wm.isWifiEnabled());
 //        mobileSwitch.setEnabled(checkMobileData());
 
@@ -201,6 +210,13 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
 
     private void enforceModifyPermission() {
                //mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
 
 }
