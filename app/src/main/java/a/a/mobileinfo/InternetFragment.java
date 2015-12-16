@@ -107,7 +107,7 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
                 String[] property = {nf.getTypeName(), nf.getExtraInfo(), nf.getState().name(),
                         wf.getLinkSpeed() + " Mbps", wifiFrequency + " GHz", wf.getBSSID(), wifiIpAddress, wf.getNetworkId() + ""};
 
-                CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Network");
+                CommonAdapter adapter = new CommonAdapter(getActivity(), desc, property, "Network");
                 setListAdapter(adapter);
             } else if (nf.getType() == ConnectivityManager.TYPE_MOBILE) {
                 String roaming;
@@ -120,19 +120,19 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
                 String[] desc = {"Internet Type", "Internet Name", "Internet State", "Roaming State"};
                 String[] property = {nf.getTypeName(), nf.getExtraInfo(), nf.getState().name(), roaming};
 
-                CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Network");
+                CommonAdapter adapter = new CommonAdapter(getActivity(), desc, property, "Network");
                 setListAdapter(adapter);
             } else {
                 String[] desc = {"Internet Type", "Internet Name", "Internet State"};
                 String[] property = {nf.getTypeName(), nf.getExtraInfo(), nf.getState().name()};
 
-                CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Network");
+                CommonAdapter adapter = new CommonAdapter(getActivity(), desc, property, "Network");
                 setListAdapter(adapter);
             }
         } else {
             String[] desc = {"Network State"};
             String[] property = {"Network Not Connected\n OR \nTurn On Data Services"};
-            CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Network");
+            CommonAdapter adapter = new CommonAdapter(getActivity(), desc, property, "Network");
             setListAdapter(adapter);
         }
     }

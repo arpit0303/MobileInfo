@@ -57,7 +57,7 @@ public class SimFragment extends ListFragment {
         }
 
         String mobileNumber = "";
-        if(tm.getLine1Number().equals("")){
+        if(tm.getLine1Number() == null){
             mobileNumber = "NULL";
         }
         else{

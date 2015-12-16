@@ -31,13 +31,14 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
     BluetoothAdapter bluetoothAdapter;
     Switch bluetoothSwitch;
     SwipeRefreshLayout swipeRefreshLayout;
+    TextView changeBluetoothName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_bluetooth,
                 container, false);
         bluetoothSwitch = (Switch) rootView.findViewById(R.id.bluetooth_switch);
-        TextView changeBluetoothName = (TextView) rootView.findViewById(R.id.changeBluetoothName_text);
+        changeBluetoothName = (TextView) rootView.findViewById(R.id.changeBluetoothName_text);
         changeBluetoothName.setOnClickListener(this);
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
@@ -60,34 +61,42 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
     }
 
     private void bluetoothDetails() {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             bluetoothAdapter = bluetoothManager.getAdapter();
         }
-        bluetoothSwitch.setChecked(bluetoothAdapter.isEnabled());
 
-        if(swipeRefreshLayout.isRefreshing()){
-            swipeRefreshLayout.setRefreshing(false);
+        if (bluetoothAdapter != null) {
+            bluetoothSwitch.setChecked(bluetoothAdapter.isEnabled());
+            String[] desc = {"Bluetooth Name", "Bluetooth MAC Address"};
+            String[] property = {bluetoothAdapter.getName(), bluetoothAdapter.getAddress()};
+
+            CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Bluetooth");
+            setListAdapter(adapter);
         }
-        String[] desc = {"Bluetooth Name", "Bluetooth MAC Address"};
-        String[] property = {bluetoothAdapter.getName(), bluetoothAdapter.getAddress()};
+        else{
+            bluetoothSwitch.setVisibility(View.GONE);
+            changeBluetoothName.setText("This Device doesn't have Bluetooth.");
 
-        CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "Bluetooth");
-        setListAdapter(adapter);
+        }
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        if (b) {
-            bluetoothAdapter.enable();
-        }
-        else{
-            bluetoothAdapter.disable();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && bluetoothAdapter != null) {
+            if (b) {
+                bluetoothAdapter.enable();
+            } else {
+                bluetoothAdapter.disable();
+            }
         }
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.changeBluetoothName_text){
+        if (view.getId() == R.id.changeBluetoothName_text) {
             bluetoothSwitch.setChecked(true);
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             final EditText bluetoothNameEditText = new EditText(getActivity());
@@ -98,8 +107,10 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             String newBluetoothName = bluetoothNameEditText.getText().toString();
-                            bluetoothAdapter.setName(newBluetoothName);
-                            bluetoothDetails();
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && bluetoothAdapter != null) {
+                                bluetoothAdapter.setName(newBluetoothName);
+                                bluetoothDetails();
+                            }
                         }
                     })
                     .setNegativeButton(android.R.string.cancel, null);
