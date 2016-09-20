@@ -5,10 +5,10 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "aasa.android.mobile.info"
+        applicationId "in.jaaga.mobileinfo"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 8
+        versionCode 9
         versionName "1.2"
     }
     buildTypes {
