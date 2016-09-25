@@ -17,9 +17,6 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import adapters.CommonAdapter;
 
 /**
@@ -52,10 +49,6 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
         bluetoothManager = (BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE);
 
         bluetoothSwitch.setOnCheckedChangeListener(this);
-
-        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         return rootView;
     }

@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import adapters.CommonAdapter;
 
 /**
@@ -26,10 +23,6 @@ public class DisplayFragment extends ListFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list,
                 container, false);
-
-        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         WindowManager am = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
         Display ds = am.getDefaultDisplay();

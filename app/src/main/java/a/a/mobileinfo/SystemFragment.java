@@ -1,21 +1,11 @@
 package a.a.mobileinfo;
 
-import android.app.usage.UsageStatsManager;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.UserManager;
-import android.os.Vibrator;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.drive.UserMetadata;
 
 import adapters.CommonAdapter;
 
@@ -38,10 +28,6 @@ public class SystemFragment extends ListFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_system,
                 container, false);
-
-        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(), desc, property, "System");
         setListAdapter(adapter);

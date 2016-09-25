@@ -13,6 +13,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.startapp.android.publish.StartAppAd;
+import com.startapp.android.publish.StartAppSDK;
+import com.unity3d.ads.android.IUnityAdsListener;
+import com.unity3d.ads.android.UnityAds;
+
 import java.util.Locale;
 
 
@@ -27,6 +32,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
+    UnityAdsListener unityAdsListener = new UnityAdsListener();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -42,6 +48,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // Set up the action bar.
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        UnityAds.init(this, "1151305", unityAdsListener);
+
+//        UnityAds.setDebugMode(true);
+//        UnityAds.setTestMode(true);
+
+        StartAppSDK.init(this, "208893309", false);
+        StartAppAd.disableSplash();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -188,6 +202,33 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(R.string.title_section8).toUpperCase(l);
             }
             return null;
+        }
+    }
+
+    public class UnityAdsListener implements IUnityAdsListener {
+
+        @Override
+        public void onHide() {
+        }
+
+        @Override
+        public void onShow() {
+        }
+
+        @Override
+        public void onVideoStarted() {
+        }
+
+        @Override
+        public void onVideoCompleted(String s, boolean b) {
+        }
+
+        @Override
+        public void onFetchCompleted() {
+        }
+
+        @Override
+        public void onFetchFailed() {
         }
     }
 

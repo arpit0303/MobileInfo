@@ -18,9 +18,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.unity3d.ads.android.UnityAds;
 
 import java.lang.reflect.Method;
 
@@ -31,7 +29,6 @@ import adapters.CommonAdapter;
  */
 public class InternetFragment extends ListFragment implements CompoundButton.OnCheckedChangeListener {
 
-    InterstitialAd mInterstitialAd;
     Switch mobileSwitch, wifiSwitch;
     NetworkInfo nf;
     WifiInfo wf;
@@ -62,26 +59,16 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
 //        mobileSwitch.setOnCheckedChangeListener(this);
         wifiSwitch.setOnCheckedChangeListener(this);
 
-        mInterstitialAd = new InterstitialAd(getActivity());
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        mInterstitialAd.setAdListener(new AdListener() {
-
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-            }
-        });
-        requestNewInterstitial();
-
+        if(UnityAds.canShow()){
+            UnityAds.show();
+        }
         connectionDetails();
 
         return rootView;
     }
 
     private void connectionDetails() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
+
         wifiSwitch.setChecked(wm.isWifiEnabled());
 //        mobileSwitch.setEnabled(checkMobileData());
 
@@ -210,13 +197,6 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
 
     private void enforceModifyPermission() {
                //mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
-    }
-
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
     }
 
 }

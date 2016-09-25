@@ -11,9 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import adapters.CommonAdapter;
 
 /**
@@ -24,10 +21,6 @@ public class DeviceFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list,
                 container, false);
-
-        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         WifiManager wm = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wf = wm.getConnectionInfo();
