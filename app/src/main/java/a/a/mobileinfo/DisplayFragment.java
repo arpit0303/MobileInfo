@@ -1,6 +1,7 @@
 package a.a.mobileinfo;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.DisplayMetrics;
@@ -26,7 +27,12 @@ public class DisplayFragment extends ListFragment {
 
         WindowManager am = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
         Display ds = am.getDefaultDisplay();
-        property[0] = String.valueOf(ds.getName().toString());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            property[0] = String.valueOf(ds.getName());
+        }
+        else{
+            property[0] = "Built-in Screen";
+        }
 
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);

@@ -46,8 +46,6 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
             }
         });
 
-        bluetoothManager = (BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE);
-
         bluetoothSwitch.setOnCheckedChangeListener(this);
 
         return rootView;
@@ -58,7 +56,10 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
             swipeRefreshLayout.setRefreshing(false);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            bluetoothManager = (BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE);
             bluetoothAdapter = bluetoothManager.getAdapter();
+        }else {
+            bluetoothAdapter = null;
         }
 
         if (bluetoothAdapter != null) {
@@ -71,7 +72,7 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
         }
         else{
             bluetoothSwitch.setVisibility(View.GONE);
-            changeBluetoothName.setText("This Device doesn't have Bluetooth.");
+            changeBluetoothName.setText(getResources().getString(R.string.no_bluetooth));
 
         }
     }

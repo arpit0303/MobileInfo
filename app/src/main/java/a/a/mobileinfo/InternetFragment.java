@@ -59,9 +59,15 @@ public class InternetFragment extends ListFragment implements CompoundButton.OnC
 //        mobileSwitch.setOnCheckedChangeListener(this);
         wifiSwitch.setOnCheckedChangeListener(this);
 
-        if(UnityAds.canShow()){
-            UnityAds.show();
+        try {
+            if(UnityAds.canShow()){
+                UnityAds.show();
+            }
         }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
         connectionDetails();
 
         return rootView;
