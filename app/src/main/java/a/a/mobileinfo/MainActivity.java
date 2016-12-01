@@ -51,8 +51,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         UnityAds.init(this, "1151305", unityAdsListener);
 
-//        UnityAds.setDebugMode(true);
-//        UnityAds.setTestMode(true);
+        UnityAds.setDebugMode(true);
+        UnityAds.setTestMode(true);
 
         StartAppSDK.init(this, "208893309", false);
         StartAppAd.disableSplash();
@@ -166,8 +166,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 case 5:
                     return new BluetoothFragment();
                 case 6:
-                    return new CPUFragment();
+                    return new BatteryFragment();
                 case 7:
+                    return new CPUFragment();
+                case 8:
                     return new MemoryFragment();
                 default:
                     return null;
@@ -176,8 +178,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         @Override
         public int getCount() {
-            // Show 8 total pages.
-            return 8;
+            // Show 9 total pages.
+            return 9;
         }
 
         @Override
@@ -200,6 +202,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(R.string.title_section7).toUpperCase(l);
                 case 7:
                     return getString(R.string.title_section8).toUpperCase(l);
+                case 8:
+                    return getString(R.string.title_section9).toUpperCase(l);
             }
             return null;
         }

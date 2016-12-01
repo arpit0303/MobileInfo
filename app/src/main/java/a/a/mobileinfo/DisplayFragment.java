@@ -63,7 +63,6 @@ public class DisplayFragment extends ListFragment {
             case 213:
                 property[4] = "tvdpi";
                 break;
-
             default:
                 property[4] = "nodpi";
                 break;

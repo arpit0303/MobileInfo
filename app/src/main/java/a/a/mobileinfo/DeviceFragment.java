@@ -27,9 +27,9 @@ public class DeviceFragment extends ListFragment {
 
         TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 
-        String[] desc = {"Device Brand", "Device Model", "Device Code Name", "Device ID (IMEI)", "Wifi MAC Address", "Device Hardware",
+        String[] desc = {"Device Brand", "Device Model", "Device Code Name", "Device ID (IMEI)", "Subscriber ID (IMSI)", "Wifi MAC Address", "Device Hardware",
                          "Device Serial Number", "Device Build ID","Overall Device Name",  "Device Manufacturer", "Device BootLoader", "Device Board"};
-        String[] property = {Build.BRAND, Build.MODEL, Build.DEVICE, tm.getDeviceId(), wf.getMacAddress(), Build.HARDWARE,
+        String[] property = {Build.BRAND, Build.MODEL, Build.DEVICE, tm.getDeviceId(), tm.getSubscriberId(), wf.getMacAddress(), Build.HARDWARE,
                             Build.SERIAL, Build.DISPLAY, Build.PRODUCT,  Build.MANUFACTURER, Build.BOOTLOADER, Build.BOARD};
 
         CommonAdapter adapter = new CommonAdapter(getActivity().getApplicationContext(),desc,property,"Device");

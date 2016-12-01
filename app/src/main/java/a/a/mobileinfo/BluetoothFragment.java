@@ -36,6 +36,12 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
                 container, false);
         bluetoothSwitch = (Switch) rootView.findViewById(R.id.bluetooth_switch);
         changeBluetoothName = (TextView) rootView.findViewById(R.id.changeBluetoothName_text);
+
+        operations(rootView);
+        return rootView;
+    }
+
+    private void operations(View rootView){
         changeBluetoothName.setOnClickListener(this);
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
@@ -47,8 +53,6 @@ public class BluetoothFragment extends ListFragment implements CompoundButton.On
         });
 
         bluetoothSwitch.setOnCheckedChangeListener(this);
-
-        return rootView;
     }
 
     private void bluetoothDetails() {

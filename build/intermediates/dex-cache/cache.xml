@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/Arpit/MobileInfo/app/build/intermediates/exploded-aar/MobileInfo/unity-ads/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="263a5b4cb87d899e7cdf7183bdb4635b06032026">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/MobileInfo-unity-ads-unspecified_f832ebd97f871988d6a21d712636c0afe9a296c7.jar" />
+    </item>
+    <item
+        jar="/Users/Arpit/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0_2c6f1f473fb58bf79ddf5ce93b291fd12adb39b6.jar" />
+    </item>
+    <item
+        jar="/Users/Arpit/MobileInfo/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0_c300ff6fdca4e82338a2ac9ada74f255bda40d5e.jar" />
+    </item>
+    <item
+        jar="/Users/Arpit/MobileInfo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-22.0.0_800e9729c84460f0c17dfbd9ed5de98f3112cefd.jar" />
+    </item>
+    <item
+        jar="/Users/Arpit/MobileInfo/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-22.0.0_16367c23d4ba9d1953385b573088e3e962e2c926.jar" />
+    </item>
+    <item
+        jar="/Users/Arpit/MobileInfo/app/libs/StartAppInApp-3.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="14fcb73a7448900d545da57b3e75fb2be7c06cef">
+        <dex dex="/Users/Arpit/MobileInfo/app/build/intermediates/pre-dexed/debug/StartAppInApp-3.5.0_8e358136c793eea3c7f8c9d475d94fdf7f7b2066.jar" />
+    </item>
+
+</items>

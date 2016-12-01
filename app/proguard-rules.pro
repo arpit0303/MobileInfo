@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-dontwarn com.startapp.**
+-keep class com.google.android.gms.ads.identifier.** {*;}
