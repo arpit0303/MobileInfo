@@ -18,3 +18,8 @@
 
 -dontwarn com.startapp.**
 -keep class com.google.android.gms.ads.identifier.** {*;}
+
+-keep class com.startapp.** {*;}
+
+-keepattributes Exceptions, InnerClasses, Signature, Deprecated, SourceFile, LineNumberTable, *Annotation*, EnclosingMethod
+-dontwarn android.webkit.JavascriptInterface

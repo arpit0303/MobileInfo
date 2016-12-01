@@ -51,8 +51,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         UnityAds.init(this, "1151305", unityAdsListener);
 
-        UnityAds.setDebugMode(true);
-        UnityAds.setTestMode(true);
+//        UnityAds.setDebugMode(true);
+//        UnityAds.setTestMode(true);
 
         StartAppSDK.init(this, "208893309", false);
         StartAppAd.disableSplash();
